@@ -16,9 +16,22 @@ const STORAGE_KEY='one-tasty-touch-product-clicks-v1';let clicks={};try{let save
 const getClicks=p=>Math.max(0,Number(clicks[p.link])||0);
 function saveClick(p){if(!p.link)return;clicks[p.link]=getClicks(p)+1;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(clicks))}catch(e){}if(sort.value==='popular')render()}
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const CATEGORY_INFO=[['정육·고기','🥩',['한우','소고기','쇠고기','등심','안심','채끝','갈비','불고기','육회','돼지고기','삼겹살','목살','이베리코','한돈','닭고기','닭다리','오리고기','정육','스테이크']],['과일·제철과일','🍎',['과일','애플망고','망고','사과','배세트','배즙','감귤','귤','딸기','포도','샤인머스캣','복숭아','수박','멜론','참외','체리','블루베리','키위','레몬','오렌지','자두','감']],['채소·농산물','🥬',['채소','야채','버섯','배추','대파','양파','마늘','무우','무  ','고구마','감자','시금치','나물','당근','양배추','상추']],['수산·해산물','🐟',['생선','수산','해산물','전복','새우','고등어','갈치','연어','굴비','오징어','문어','꽃게','김세트','멸치']],['쌀·곡물·견과','🌾',['쌀','현미','잡곡','귀리','견과','호두','아몬드','콩류','누룽지']],['양념·소스·식재료','🧂',['양념','소스','간장','고추장','된장','참기름','들기름','올리브유','식용유','식초','고춧가루','소금','설탕']],['가공식품·간편식','🍲',['밀키트','간편식','즉석','냉동','만두','떡갈비','곰탕','국밥','반찬','김치','햄','소시지']],['간식·디저트','🍰',['과자','쿠키','케이크','초콜릿','디저트','떡세트','베이커리','빵세트']],['음료·차·커피','☕',['커피','차세트','녹차','홍차','주스','음료','탄산']],['냄비·프라이팬','🍳',['프라이팬','후라이팬','팬세트','냄비','그린팬','웍','무쇠팬']],['조리도구','🔪',['조리도구','도마','칼세트','식칼','채칼','국자','뒤집개','집게','다지기']],['주방가전','⚡',['에어프라이어','믹서기','블렌더','전자레인지','오븐','전기밥솥','인덕션','전기포트']],['보관·정리용품','🥡',['밀폐용기','보관용기','지퍼백','수납','정리함','보관통']],['식기·주방소품','🍽️',['접시','그릇','수저','젓가락','식기','머그컵','와인잔']],['주방세척·위생','🧽',['수세미','세제','행주','고무장갑','키친타월']],['선물세트·기타','🎁',[]]];
+const CATEGORY_INFO=[['정육·고기','🥩',['한우','소고기','쇠고기','등심','안심','채끝','갈비','불고기','육회','돼지고기','삼겹살','목살','이베리코','한돈','닭고기','닭다리','오리고기','정육','스테이크']],['과일·제철과일','🍎',['과일','애플망고','망고','사과','배세트','배즙','감귤','귤','딸기','포도','샤인머스캣','복숭아','수박','멜론','참외','체리','블루베리','키위','레몬','오렌지','자두','감']],['채소·농산물','🥬',['채소','야채','버섯','배추','대파','양파','마늘','무우','무  ','고구마','감자','시금치','나물','당근','양배추','상추']],['수산·해산물','🐟',['생선','수산','해산물','전복','새우','고등어','갈치','연어','굴비','오징어','문어','꽃게','김세트','멸치','장어','대게']],['쌀·곡물·견과','🌾',['쌀','현미','잡곡','귀리','견과','호두','아몬드','콩류','누룽지']],['양념·소스·식재료','🧂',['양념','소스','간장','고추장','된장','참기름','들기름','올리브유','식용유','식초','고춧가루','소금','설탕']],['가공식품·간편식','🍲',['밀키트','간편식','즉석','냉동','만두','떡갈비','곰탕','국밥','반찬','김치','햄','소시지']],['간식·디저트','🍰',['과자','쿠키','케이크','초콜릿','디저트','떡세트','베이커리','빵세트']],['음료·차·커피','☕',['커피','차세트','녹차','홍차','주스','음료','탄산']],['냄비·프라이팬','🍳',['프라이팬','후라이팬','팬세트','냄비','그린팬','웍','무쇠팬']],['조리도구','🔪',['조리도구','도마','칼세트','식칼','채칼','국자','뒤집개','집게','다지기']],['주방가전','⚡',['에어프라이어','믹서기','블렌더','전자레인지','오븐','전기밥솥','인덕션','전기포트']],['보관·정리용품','🥡',['밀폐용기','보관용기','지퍼백','수납','정리함','보관통']],['식기·주방소품','🍽️',['접시','그릇','수저','젓가락','식기','머그컵','와인잔']],['주방세척·위생','🧽',['수세미','세제','행주','고무장갑','키친타월']],['선물세트·기타','🎁',[]]];
 // products.json의 category_override가 있으면 최우선 적용. 기존 category와 링크는 수정하지 않음.
-function categoryOf(p){if(p.category_override)return p.category_override;const name=String(p.name||'').toLowerCase();for(const [label,,keywords] of CATEGORY_INFO){if(keywords.some(k=>name.includes(k.toLowerCase())))return label}const cat=String(p.category||'').trim();if(cat==='프라이팬'||cat==='냄비')return '냄비·프라이팬';return cat||'선물세트·기타'}
+function categoryOf(p){
+ if(p.category_override)return p.category_override;
+ const cat=String(p.category||'').trim();
+ // Always honor V33 server-side category first; fallback inference only for legacy items.
+ if(CATEGORY_INFO.some(c=>c[0]===cat))return cat;
+ if(cat==='프라이팬'||cat==='냄비')return '냄비·프라이팬';
+ if(cat==='칼·도마')return '조리도구';
+ const name=String(p.name||'').toLowerCase();
+ if(/보조배터리|충전기|이어폰/.test(name))return '선물세트·기타';
+ if(/진공\s*포장기|식품\s*건조기|건조기|포장기/.test(name))return '주방가전';
+ if(/마카롱|뚱카롱/.test(name))return '간식·디저트';
+ for(const [label,,keywords] of CATEGORY_INFO){if(keywords.some(k=>name.includes(k.toLowerCase())))return label}
+ return cat||'선물세트·기타';
+}
 function emojiOf(cat){return CATEGORY_INFO.find(c=>c[0]===cat)?.[1]||'🛍️'}
 function chooseCat(cat){active=cat;q.value='';render();document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'})}
 function renderFeatured(){featuredCats.innerHTML='';const wanted=['정육·고기','과일·제철과일','채소·농산물','수산·해산물','냄비·프라이팬','주방가전'];wanted.forEach(cat=>{let n=products.filter(p=>categoryOf(p)===cat).length;let b=document.createElement('button');b.type='button';b.className='category-tile';b.innerHTML=`<div class="pic">${emojiOf(cat)}</div><strong>${escapeHTML(cat)}</strong><small>${n}개 상품</small>`;b.onclick=()=>chooseCat(cat);featuredCats.appendChild(b)})}
