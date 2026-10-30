@@ -1,0 +1,18 @@
+[
+  {
+    "id": "kimchi-pancake", "title": "김치전 가장자리만 타는 이유", "keywords": ["김치전", "부침개"],
+    "products": [{"id": "coupang-d20bd6ad0b7406", "who": "한 장씩 전을 부칠 팬을 찾는 분", "use": "반죽을 넓게 펼치는 부침 조리", "caution": "등록명 기준 28cm 코팅 팬. 실제 바닥 지름·열원 호환·코팅 관리법은 판매처에서 확인하세요.", "evidence": "products.json 등록명: 키친아트 뉴 티타늄 코팅 프라이팬, 28cm"}]
+  },
+  {
+    "id": "pork-cabbage", "title": "삼겹살 채소찜", "keywords": ["삼겹살채소찜", "통삼겹", "삼겹살"],
+    "products": [{"id": "coupang-7709017324", "who": "삼겹살을 넣어 채소찜을 만들 분", "use": "채소 사이에 넣는 고기 재료 후보", "caution": "등록명은 냉장 500g. 두께·소비기한·보관법과 배송 상태를 확인하세요. 영상에 실제 사용했다는 의미는 아닙니다.", "evidence": "products.json 등록명: 선진포크한돈 시그니처 삼겹살 (냉장), 500g, 1개"}]
+  },
+  {
+    "id": "tteokbokki", "title": "옛날 떡볶이 소스", "keywords": ["떡볶이"],
+    "products": [{"id": "coupang-e17e8bc9d0c4fd", "who": "떡볶이 소스를 끓일 냄비를 찾는 분", "use": "소스를 저으며 끓이는 조리용 냄비 후보", "caution": "등록명은 스테인리스 편수냄비. 용량·바닥 지름·열원 호환과 손잡이 주의사항을 확인하세요.", "evidence": "products.json 등록명: 스테니 인덕션 무연마제 통5중 스테인리스 편수냄비"}]
+  },
+  {
+    "id": "cabbage-salad", "title": "배추겉절이 버무림", "keywords": ["배추겉절이", "열무김치"],
+    "products": [{"id": "coupang-d7b90257e6b088", "who": "겉절이 채소를 썰 도마가 필요한 분", "use": "씻은 채소를 자르는 준비 단계", "caution": "등록명은 모도리 깔끔 도마. 크기·재질·세척법을 확인하고 생고기용과 채소용을 구분해 사용하세요.", "evidence": "products.json 등록명: 모도리 깔끔 도마"}]
+  }
+]
